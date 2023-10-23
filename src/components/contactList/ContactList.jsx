@@ -2,9 +2,9 @@ import styles from './contactList.module.css';
 
 export function ContactList({ list }) {
   return (
-    <ul>
+    <ul className={styles['contact-list']}>
       {list.map(item => (
-        <li>{item.name}</li>
+        <li className={styles.contact}>{item.name}</li>
       ))}
     </ul>
   );

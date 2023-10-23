@@ -6,6 +6,7 @@ export function ContactForm({ contactName, change, add }) {
 
   return (
     <form
+      className={styles.form}
       id={contactName}
       onSubmit={e => {
         e.preventDefault();
@@ -13,8 +14,11 @@ export function ContactForm({ contactName, change, add }) {
         add(e.target.id, contactId);
       }}
     >
-      <label htmlFor="name">Name</label>
+      <label className={styles.label} htmlFor="name">
+        Name
+      </label>
       <input
+        className={styles.input}
         onChange={e => {
           change(e.target.value);
         }}
@@ -27,6 +31,7 @@ export function ContactForm({ contactName, change, add }) {
         required
       />
       <button
+        className={styles.button}
         id={contactName}
         onSubmit={e => {
           e.preventDefault();
