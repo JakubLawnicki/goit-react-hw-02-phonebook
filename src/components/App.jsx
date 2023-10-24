@@ -28,6 +28,8 @@ export class App extends Component {
     this.setState(prev => {
       return {
         contacts: [...prev.contacts, { name, number, id }],
+        name: '',
+        number: '',
       };
     });
   };
