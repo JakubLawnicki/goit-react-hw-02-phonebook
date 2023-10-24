@@ -6,27 +6,35 @@ export class App extends Component {
   state = {
     contacts: [],
     name: '',
+    number: '',
   };
 
-  changeValue = value => {
+  changeValue = (value, inputName) => {
+    let key;
     this.setState(() => {
+      if (inputName === 'name') {
+        key = 'name';
+      } else {
+        key = 'number';
+      }
+
       return {
-        name: value,
+        [key]: value,
       };
     });
   };
 
-  addContact = (name, id) => {
+  addContact = (name, number, id) => {
     this.setState(prev => {
       return {
-        contacts: [...prev.contacts, { name, id }],
+        contacts: [...prev.contacts, { name, number, id }],
       };
     });
   };
 
   render() {
-    const { contacts, name } = this.state;
-
+    const { contacts, name, number } = this.state;
+    console.log(this.state);
     return (
       <div
         style={{
@@ -43,6 +51,7 @@ export class App extends Component {
         <h1>Phonebook</h1>
         <ContactForm
           contactName={name}
+          contactNumber={number}
           change={this.changeValue}
           add={this.addContact}
         />

@@ -1,26 +1,26 @@
 import styles from './contactForm.module.css';
 import { nanoid } from 'nanoid';
 
-export function ContactForm({ contactName, change, add }) {
+export function ContactForm({ contactName, contactNumber, change, add }) {
   const contactId = nanoid();
 
   return (
     <form
       className={styles.form}
-      id={contactName}
       onSubmit={e => {
         e.preventDefault();
 
-        add(e.target.id, contactId);
+        add(contactName, contactNumber, contactId);
+        console.log(e.target.props);
       }}
     >
       <label className={styles.label} htmlFor="name">
         Name
       </label>
       <input
-        className={styles.input}
+        className={styles['input-name']}
         onChange={e => {
-          change(e.target.value);
+          change(e.target.value, e.target.name);
         }}
         type="text"
         name="name"
@@ -30,13 +30,28 @@ export function ContactForm({ contactName, change, add }) {
         title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
         required
       />
+      <label className={styles.label} htmlFor="number">
+        Number
+      </label>
+      <input
+        className={styles['input-tel']}
+        onChange={e => {
+          change(e.target.value, e.target.name);
+        }}
+        type="tel"
+        name="number"
+        id="number"
+        value={contactNumber}
+        pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+        title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+        required
+      />
       <button
         className={styles.button}
-        id={contactName}
         onSubmit={e => {
           e.preventDefault();
 
-          add(e.target.id, contactId);
+          add(contactName, contactNumber, contactId);
         }}
         type="submit"
       >
