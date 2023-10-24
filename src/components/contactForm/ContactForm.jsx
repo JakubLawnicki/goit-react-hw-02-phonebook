@@ -11,7 +11,6 @@ export function ContactForm({ contactName, contactNumber, change, add }) {
         e.preventDefault();
 
         add(contactName, contactNumber, contactId);
-        console.log(e.target.props);
       }}
     >
       <label className={styles.label} htmlFor="name">
