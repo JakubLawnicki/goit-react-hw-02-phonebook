@@ -31,11 +31,12 @@ export class App extends Component {
   };
 
   addContact = (name, number, id) => {
-    this.state.contacts.forEach(contact => {
-      if (name === contact.name) {
-        return alert(name + ' is already in contacts.');
+    for (const contact of this.state.contacts) {
+      if (name.toLowerCase() === contact.name.toLowerCase()) {
+        return alert(contact.name + ' is already in contacts.');
       }
-    });
+      break;
+    }
 
     this.setState(prev => {
       return {
@@ -50,6 +51,18 @@ export class App extends Component {
     this.setState(() => {
       return {
         filter: value,
+      };
+    });
+  };
+
+  deleteContact = contactId => {
+    this.setState(prev => {
+      const index = prev.contacts.findIndex(item => item.id === contactId);
+      if (index >= 0) {
+        prev.contacts.splice(index, 1);
+      }
+      return {
+        contacts: prev.contacts,
       };
     });
   };
@@ -79,7 +92,7 @@ export class App extends Component {
         />
         <h2>Contacts</h2>
         <Filter filterValue={this.setFilter} />
-        <ContactList list={contacts} filter={filter} />
+        <ContactList list={contacts} filter={filter} del={this.deleteContact} />
       </div>
     );
   }

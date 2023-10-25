@@ -1,13 +1,24 @@
 import styles from './contactList.module.css';
 
-export function ContactList({ list, filter }) {
+export function ContactList({ list, filter, del }) {
   console.log(list);
   if (filter === '') {
     return (
       <ul className={styles['contact-list']}>
         {list.map(item => (
           <li className={styles.contact} key={item.id}>
-            {item.name}: {item.number}
+            <p>
+              {item.name}: {item.number}
+            </p>
+            <button
+              type="button"
+              id={item.id}
+              onClick={e => {
+                del(e.target.id);
+              }}
+            >
+              Delete
+            </button>
           </li>
         ))}
       </ul>
