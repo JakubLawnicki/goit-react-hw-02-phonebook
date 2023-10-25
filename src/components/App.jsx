@@ -31,6 +31,12 @@ export class App extends Component {
   };
 
   addContact = (name, number, id) => {
+    this.state.contacts.forEach(contact => {
+      if (name === contact.name) {
+        return alert(name + ' is already in contacts.');
+      }
+    });
+
     this.setState(prev => {
       return {
         contacts: [...prev.contacts, { name, number, id }],
