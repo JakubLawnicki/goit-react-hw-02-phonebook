@@ -1,4 +1,5 @@
 import styles from './contactList.module.css';
+import PropTypes from 'prop-types';
 
 export function ContactList({ list, filter, del }) {
   console.log(list);
@@ -43,3 +44,9 @@ export function ContactList({ list, filter, del }) {
     );
   }
 }
+
+ContactList.propTypes = {
+  list: PropTypes.array,
+  filter: PropTypes.string,
+  del: PropTypes.func,
+};

@@ -1,6 +1,7 @@
 // import styles from './filter.module.css';
+import PropTypes from 'prop-types';
 
-export function Filter({ filter, filterValue }) {
+export function Filter({ filterValue }) {
   return (
     <div>
       <p>Find contacts by name</p>
@@ -13,3 +14,7 @@ export function Filter({ filter, filterValue }) {
     </div>
   );
 }
+
+Filter.propTypes = {
+  filterValue: PropTypes.func,
+};

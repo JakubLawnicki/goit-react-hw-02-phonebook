@@ -69,7 +69,7 @@ export class App extends Component {
 
   render() {
     const { contacts, filter, name, number } = this.state;
-    console.log(this.state);
+
     return (
       <div
         style={{

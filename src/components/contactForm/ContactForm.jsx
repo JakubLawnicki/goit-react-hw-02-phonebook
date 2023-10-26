@@ -1,5 +1,6 @@
 import styles from './contactForm.module.css';
 import { nanoid } from 'nanoid';
+import PropTypes from 'prop-types';
 
 export function ContactForm({ contactName, contactNumber, change, add }) {
   const contactId = nanoid();
@@ -9,7 +10,6 @@ export function ContactForm({ contactName, contactNumber, change, add }) {
       className={styles.form}
       onSubmit={e => {
         e.preventDefault();
-
         add(contactName, contactNumber, contactId);
       }}
     >
@@ -49,7 +49,6 @@ export function ContactForm({ contactName, contactNumber, change, add }) {
         className={styles.button}
         onSubmit={e => {
           e.preventDefault();
-
           add(contactName, contactNumber, contactId);
         }}
         type="submit"
@@ -59,3 +58,10 @@ export function ContactForm({ contactName, contactNumber, change, add }) {
     </form>
   );
 }
+
+ContactForm.propTypes = {
+  contactName: PropTypes.string,
+  contactNumber: PropTypes.string,
+  change: PropTypes.func,
+  add: PropTypes.func,
+};
