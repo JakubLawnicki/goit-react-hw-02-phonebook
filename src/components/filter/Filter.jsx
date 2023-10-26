@@ -1,12 +1,13 @@
-// import styles from './filter.module.css';
+import styles from './filter.module.css';
 import PropTypes from 'prop-types';
 
 export function Filter({ filterValue }) {
   return (
     <div>
-      <p>Find contacts by name</p>
+      <p className={styles['filter-text']}>Find contacts by name</p>
       <input
         type="text"
+        className={styles.input}
         onChange={e => {
           filterValue(e.target.value);
         }}

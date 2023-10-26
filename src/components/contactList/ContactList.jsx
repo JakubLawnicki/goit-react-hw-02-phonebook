@@ -2,7 +2,6 @@ import styles from './contactList.module.css';
 import PropTypes from 'prop-types';
 
 export function ContactList({ list, filter, del }) {
-  console.log(list);
   if (filter === '') {
     return (
       <ul className={styles['contact-list']}>
@@ -13,6 +12,7 @@ export function ContactList({ list, filter, del }) {
             </p>
             <button
               type="button"
+              className={styles.button}
               id={item.id}
               onClick={e => {
                 del(e.target.id);
